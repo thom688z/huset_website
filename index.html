@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang=da>
+
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huset Kbh</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="header.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header id="header">
+
+    </header>
+    <main>
+        <section class="container" data-container>
+            <article class="l1">
+                <a href="" class="single">
+             <img src="" alt="">
+              </a>
+            </article>
+
+            <article class="l1b">
+                <div id="arrowup"></div>
+                <h2 class="h1b" data-title></h2>
+                <p class="p1b" data-dato></p>
+                <p class="p1b" data-sted></p>
+            </article>
+
+            <article class="l2">
+                <p class="p2" data-sted></p>
+                <p class="p2" data-dato></p>
+                <a href="" class="single">
+             <img src="" alt="">
+                </a>
+                <h2 class="h2" data-title></h2>
+            </article>
+            <article class="l2b">
+                <a href="" class="single">
+             <img src="" alt="">
+                </a>
+                <h2 class="h2b" data-title></h2>
+
+                <p class="p2b" data-dato></p>
+                <p class="p2b p2c" data-sted></p>
+
+            </article>
+
+            <article class="l3">
+                <h2 class="h3" data-title></h2>
+                <p class="p3" data-dato></p>
+                <p class="p3" data-sted></p>
+            </article>
+
+            <article class="l3b">
+                <a href="" class="single">
+             <img src="" alt="">
+                </a>
+            </article>
+
+            <article class="l4">
+                <h2 class="h4" data-title></h2>
+                <p class="p4" data-teaser></p>
+            </article>
+
+
+        </section>
+
+    </main>
+
+    <div class="bundcontainer">
+    <div class="bundmenu"><a href="koncerter_1.html"><p class="menup">KONCERTER</p></a></div>
+    <div class="bundmenu"><a href="film_1.html"><p class="menup">FILM</p></a></div>
+    <div class="bundmenu"><a href="teater_1.html"><p class="menup">TEATER</p></a></div>
+    <div class="bundmenu"><a href="andet_1.html"><p class="menup">ANDET</p></a></div>
+</div>
+
+    <footer>
+    <div class="somecontainer">
+<div class="box"><a href="https://www.facebook.com/Huset.Koebenhavn" class="fa fa-facebook"></a></div>
+<div class="box"><a href="https://www.instagram.com/husetkbh/" class="fa fa-twitter"></a></div>
+<div class="box"><a href="https://twitter.com/HusetKBH" class="fa fa-instagram"></a></div>
+<div class="box"><a href="https://www.flickr.com/photos/135006755@N04/" class="fa fa-flickr"></a></div>
+    </div>
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", getJSON);
+        let post1;
+        let post1b;
+        let post2;
+        let post2b;
+        let post3;
+        let post3b;
+        let post4;
+        let post5;
+        let post5b;
+        let post6;
+
+        let l1Container = document.querySelector(".l1");
+        let l1bContainer = document.querySelector(".l1b");
+        let l2Container = document.querySelector(".l2");
+        let l2bContainer = document.querySelector(".l2b");
+        let l3Container = document.querySelector(".l3");
+        let l3bContainer = document.querySelector(".l3b");
+
+        let l4Container = document.querySelector(".l4");
+        let l4bContainer = document.querySelector(".l4b");
+        let l5Container = document.querySelector(".l5");
+        let l5bContainer = document.querySelector(".l5b");
+        let l6Container = document.querySelector(".l6");
+
+        async function getJSON() {
+            let jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/koncerter?per_page=1");
+            post1 = await jsonData.json();
+            post1 = post1[0]
+
+            jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/koncerter?per_page=1");
+            post1b = await jsonData.json();
+            post1b = post1b[0]
+
+            jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/teaterevents?per_page=1");
+            post2 = await jsonData.json();
+            post2 = post2[0]
+
+            jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/teaterevents?per_page=2");
+            post2b = await jsonData.json();
+            post2b = post2b[1]
+
+            jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/filmevents?per_page=2");
+            post3 = await jsonData.json();
+            post3 = post3[1]
+
+            jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/filmevents?per_page=2");
+            post3b = await jsonData.json();
+            post3b = post3b[1]
+
+                    jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/redaktionelt?per_page=1");
+            post4 = await jsonData.json();
+            post4 = post4[0]
+
+            visPosts();
+        }
+
+        function visPosts() {
+
+            l1Container.querySelector("img").src = post1.acf.billede;
+            l1Container.querySelector(".single").setAttribute("href", "single_k_1.html?id=" + post1.id);
+
+            l1bContainer.querySelector("[data-title]").textContent = post1b.title.rendered;
+            l1bContainer.querySelector("[data-dato]").textContent = post1b.acf.dato;
+            l1bContainer.querySelector("[data-sted]").textContent = post1b.acf.sted;
+
+            l2Container.querySelector("[data-title]").textContent = post2.title.rendered;
+            l2Container.querySelector("[data-dato]").textContent = post2.acf.dato;
+            l2Container.querySelector("img").src = post2.acf.billede;
+            l2Container.querySelector("[data-sted]").textContent = post2.acf.sted;
+            l2Container.querySelector(".single").setAttribute("href", "single_t_1.html?id=" + post2.id);
+
+            l2bContainer.querySelector("[data-title]").textContent = post2b.title.rendered;
+            l2bContainer.querySelector("[data-dato]").textContent = post2b.acf.dato;
+            l2bContainer.querySelector("img").src = post2b.acf.billede;
+            l2bContainer.querySelector("[data-sted]").textContent = post2b.acf.sted;
+            l2bContainer.querySelector(".single").setAttribute("href", "single_t_1.html?id=" + post2b.id);
+
+            l3Container.querySelector("[data-title]").innerHTML = post3.title.rendered;
+            l3Container.querySelector("[data-dato]").textContent = post3.acf.dato;
+            l3Container.querySelector("[data-sted]").textContent = post3.acf.sted;
+
+            l3bContainer.querySelector("img").src = post3b.acf.billede;
+            l3bContainer.querySelector(".single").setAttribute("href", "single_f_1.html?id=" + post3b.id);
+
+            l4Container.querySelector("[data-title]").innerHTML = post4.title.rendered;
+            l4Container.querySelector("[data-teaser]").innerHTML = post4.acf.teaser;
+        }
+
+    </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="portfolio.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang=da>
+
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huset Kbh</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="typografi.css" type="text/css">
+    <link rel="stylesheet" href="menu_event.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div id="top">
+        <img src="logo.png" alt="logo" class="logo">
+
+    </div>
+    <header>
+        <nav id="advanced-nav" class="advanced-nav menu" role="navigation">
+            <ul>
+                <li>
+                    <a href="koncerter.html">
+                        <div class="icon">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                        </div>
+                        <div class="button-text">
+                            KONCERTER
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="teater.html">
+                        <div class="icon">
+                            <i class="fa fa-institution"></i>
+                        </div>
+                        <div class="button-text">
+                            TEATER
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="film.html">
+                        <div class="icon">
+                            <i class="fa fa-video-camera"></i>
+                        </div>
+                        <div class="button-text">
+                            FILM
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="andet.html">
+                        <div class="icon">
+                            <i class="fa fa-random"></i>
+                        </div>
+                        <div class="button-text">
+                            ANDET
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:+45 21512151">
+                        <div class="icon">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="button-text">
+                            KONTAKT
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #advanced-nav .advanced-nav -->
+
+    </header>
+
+    <main>
+        <section class="container" data-container></section>
+        <template data-template>
+            <article class="postListview">
+                <h2 data-title></h2>
+                <p data-navn></p>
+                <p data-titel></p>
+                <p data-mail></p>
+                <p data-telefon></p>
+                <img src="" alt="">
+                        </article>
+         </template>
+
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", getJSON);
+        let posts;
+        let postTemplate = document.querySelector("[data-template]");
+        let postContainer = document.querySelector("[data-container]");
+
+        async function getJSON() {
+            let jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/kontakt");
+            posts = await jsonData.json();
+            visPosts();
+        }
+
+        function visPosts() {
+
+            console.log(posts);
+
+            posts.forEach(post => {
+                let klon = postTemplate.cloneNode(true).content;
+                klon.querySelector("[data-title]").textContent = post.title.rendered;
+                klon.querySelector("[data-navn]").textContent = post.acf.navn;
+                klon.querySelector("[data-titel]").textContent = post.acf.titel;
+                klon.querySelector("img").src = post.acf.billede;
+                klon.querySelector("[data-mail]").textContent = post.acf.mail;
+                postContainer.appendChild(klon);
+
+            })
+        }
+    </script>
+
+    <footer>
+        <div class="column_content">
+
+            <a href="https://www.facebook.com/Huset.Koebenhavn" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/husetkbh/" class="fa fa-instagram"></a>
+            <a href="https://twitter.com/HusetKBH" class="fa fa-twitter"></a>
+            <a href="https://www.flickr.com/photos/135006755@N04/" class="fa fa-flickr"></a>
+        </div>
+
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+
+</html>

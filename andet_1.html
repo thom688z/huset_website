@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang=da>
+
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huset Kbh</title>
+    <link rel="stylesheet" href="events.css" type="text/css">
+    <link rel="stylesheet" href="header.css" type="text/css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <header id="header">
+
+    </header>
+
+    <main>
+        <section class="container" data-container></section>
+        <template data-template>
+            <article class="postListview">
+             <h2 data-title></h2>
+             <p data-dato></p>
+                  <p data-sted></p>
+            <a href="" class="single">
+             <img src="" alt="">
+                </a>
+                        </article>
+         </template>
+
+    </main>
+
+    <div class="bundcontainer">
+        <div class="bundmenu">
+            <a href="koncerter_1.html">
+                <p class="menup">KONCERTER</p>
+            </a>
+        </div>
+        <div class="bundmenu">
+            <a href="film_1.html">
+                <p class="menup">FILM</p>
+            </a>
+        </div>
+        <div class="bundmenu">
+            <a href="teater_1.html">
+                <p class="menup">TEATER</p>
+            </a>
+        </div>
+        <div class="bundmenu">
+            <a href="andet_1.html">
+                <p class="menup">ANDET</p>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <div class="somecontainer">
+            <div class="box"><a href="https://www.facebook.com/Huset.Koebenhavn" class="fa fa-facebook"></a></div>
+            <div class="box"><a href="https://www.instagram.com/husetkbh/" class="fa fa-twitter"></a></div>
+            <div class="box"><a href="https://twitter.com/HusetKBH" class="fa fa-instagram"></a></div>
+            <div class="box"><a href="https://www.flickr.com/photos/135006755@N04/" class="fa fa-flickr"></a></div>
+        </div>
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", getJSON);
+        let posts;
+        let postTemplate = document.querySelector("[data-template]");
+        let postContainer = document.querySelector("[data-container]");
+
+        async function getJSON() {
+            let jsonData = await fetch("http://snikster.dk/KEA/07/huset/wordpress/wp-json/wp/v2/andetevents");
+            posts = await jsonData.json();
+            visPosts();
+        }
+
+        function visPosts() {
+
+            console.log(posts);
+
+            posts.forEach(post => {
+                let klon = postTemplate.cloneNode(true).content;
+                klon.querySelector("[data-title]").textContent = post.title.rendered;
+                klon.querySelector("[data-dato]").textContent = post.acf.dato;
+                klon.querySelector("img").src = post.acf.billede;
+                klon.querySelector("[data-sted]").textContent = post.acf.sted;
+                klon.querySelector(".single").setAttribute("href", "single_a_1.html?id=" + post.id);
+                postContainer.appendChild(klon);
+
+            })
+        }
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="portfolio.js"></script>
+
+</body>
+
+</html>
